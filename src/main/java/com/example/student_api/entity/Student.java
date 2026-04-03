@@ -1,4 +1,4 @@
-package com.example.student_api.Entity;
+package com.example.student_api.entity;
 
 import jakarta.persistence.*;
 
@@ -15,7 +15,12 @@ public class Student {
     private String  major;
     private Double cgpa;
 
-    public Student(String name ,String email,Integer age, String major,Double cgpa){
+    //non-argument constructor
+    public Student(){
+
+    }
+
+    public Student(String name , String email, Integer age, String major, Double cgpa){
         this.name=name;
         this.email=email;
         this.age=age;
