@@ -1,6 +1,7 @@
 package com.example.student_api;
 
 import com.example.student_api.entity.Student;
+import com.example.student_api.service.StudentService;
 import jakarta.annotation.PostConstruct;
 import com.example.student_api.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,35 +11,34 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StudentApiApplication {
 	@Autowired
-	private StudentRepository studentRepo;
+	private StudentService studentService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(StudentApiApplication.class, args);
 	}
 	@PostConstruct
 	public void test(){
-		//create dummy for testing
-		if( studentRepo.count()==0){
-			Student student_dummy = new Student(
-					"Alex",
-					"224901@student.upm.edu.my",
-					22,
-					"Software Engineering Department",
-					3.905);
+			if (studentService.getAllStudents().isEmpty()) {
+				Student studentDummy = new Student(
+						"Alex",
+						"224901@student.upm.edu.my",
+						22,
+						"Software Engineering Department",
+						3.905
+				);
 
-		//save dummy to db
-		studentRepo.save(student_dummy);
-		System.out.println("student dummy saved!");}
+				studentService.saveStudent(studentDummy);
+				System.out.println("Student dummy saved!");
+			} else {
+				System.out.println("Dummy already exists");
+			}
 
-		else {
-			System.out.println("dummy already exists");
+			studentService.getAllStudents().forEach(student -> {
+				System.out.println(student.getName());
+			});
 		}
-		// print dummy in console
-		studentRepo.findAll().forEach(student ->{
-			System.out.println(student.getName());
-		});
 	}
 
 
 
-}
+
