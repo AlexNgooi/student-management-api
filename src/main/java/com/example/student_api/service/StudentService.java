@@ -16,8 +16,8 @@ public class StudentService {
         return studentRepo.findAll();
     }
 
-    public void saveStudent(Student student){
-        studentRepo.save(student);
+    public Student saveStudent(Student student){
+        return studentRepo.save(student);
     }
 
     public Student getStudentById(Long id){

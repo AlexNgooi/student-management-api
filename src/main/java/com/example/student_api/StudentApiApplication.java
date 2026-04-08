@@ -16,7 +16,7 @@ public class StudentApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StudentApiApplication.class, args);
 	}
-	@PostConstruct
+	/*@PostConstruct
 	public void test(){
 			if (studentService.getAllStudents().isEmpty()) {
 				Student studentDummy = new Student(
@@ -36,7 +36,7 @@ public class StudentApiApplication {
 			studentService.getAllStudents().forEach(student -> {
 				System.out.println(student.getName());
 			});
-		}
+		}*/
 	}
 
 
