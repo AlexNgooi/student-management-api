@@ -25,6 +25,22 @@ public class StudentService {
         return result.orElse(null);
     }
 
+    public Student updateStudent(Long id, Student updatedStudent) {
+        Student existingStudent = studentRepo.findById(id).orElse(null);
+
+        if (existingStudent == null) {
+            return null;
+        }
+
+        existingStudent.setName(updatedStudent.getName());
+        existingStudent.setEmail(updatedStudent.getEmail());
+        existingStudent.setAge(updatedStudent.getAge());
+        existingStudent.setMajor(updatedStudent.getMajor());
+        existingStudent.setCgpa(updatedStudent.getCgpa());
+
+        return studentRepo.save(existingStudent);
+    }
+
     public void deleteStudentById(Long id){
         studentRepo.deleteById(id);
     }

@@ -51,6 +51,16 @@ public class Student {
     public void setMajor(String major){
         this.major=major;
     }
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setAge(Integer age){
+        this.age=age;
+    }
+    public void setEmail(String email){
+        this.email=email;
+    }
+
 
     public void setCgpa(Double cgpa){
         this.cgpa=cgpa;
